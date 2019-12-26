@@ -24,9 +24,8 @@ detection:
         Properties: 
             - ‘*Replicating Directory Changes All*'
             - ‘*Replication-Get-Changes*’
-            - ‘*9923a32a-3607-11d2-b9be-0000f87a36b2*’
+            - ‘*1131f6aa-9c07-11d1-f79f-00c04fc2dcd2*’
             - ‘*1131f6ad-9c07-11d1-f79f-00c04fc2dcd2*’
-            - ‘*1131f6ac-9c07-11d1-f79f-00c04fc2dcd2*’
     filter1:
         SubjectDomainName: 'Window Manager'
     filter2: 
