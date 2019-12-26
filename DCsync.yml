@@ -1,0 +1,39 @@
+title: DCSync
+id: 611eab06-a145-4dfa-a295-3ccc5c20f59a
+description: Detects DCsync security events
+status: experimental
+date: 2018/06/03
+modified: 2019/10/26
+author: Benjamin Delpy, Florian Roth, Modified by Gl3bGl4z
+references:
+    - https://twitter.com/gentilkiwi/status/1003236624925413376
+    - https://gist.github.com/gentilkiwi/dcc132457408cf11ad2061340dcb53c2
+    - https://twitter.com/gentilkiwi/status/637402457740562432
+    - https://github.com/Neo23x0/sigma/blob/master/rules/windows/builtin/win_dcsync.yml
+    - https://2017.zeronights.org/wp-content/uploads/materials/ZN17_Kheirkhabarov_Hunting_for_Credentials_Dumping_in_Windows_Environment.pdf
+tags:
+    - attack.credential_access
+    - attack.s0002
+    - attack.t1003
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4662
+        Properties: 
+            - ‘*Replicating Directory Changes All*'
+            - ‘*Replication-Get-Changes*’
+            - ‘*9923a32a-3607-11d2-b9be-0000f87a36b2*’
+            - ‘*1131f6ad-9c07-11d1-f79f-00c04fc2dcd2*’
+            - ‘*1131f6ac-9c07-11d1-f79f-00c04fc2dcd2*’
+    filter1:
+        SubjectDomainName: 'Window Manager'
+    filter2: 
+        SubjectUserName:
+            - 'NT AUTHORITY*'
+            - '*$'
+    condition: selection and not filter1 and not filter2
+falsepositives:
+    - Valid DC Sync that is not covered by the filters; please report
+level: high
