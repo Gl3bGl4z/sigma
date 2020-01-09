@@ -1,0 +1,34 @@
+title: DCSync rights added - Generic
+id: 0000000000000000000001111
+description: Detects DCsync security events
+status: experimental
+date: 2020/01/09
+modified: 2020/01/09
+author: Benjamin Delpy, Florian Roth, Modified by Gl3bGl4z
+references:
+    - https://twitter.com/gentilkiwi/status/1003236624925413376
+    - https://gist.github.com/gentilkiwi/dcc132457408cf11ad2061340dcb53c2
+    - https://twitter.com/gentilkiwi/status/637402457740562432
+    - https://github.com/Neo23x0/sigma/blob/master/rules/windows/builtin/win_dcsync.yml
+    - https://2017.zeronights.org/wp-content/uploads/materials/ZN17_Kheirkhabarov_Hunting_for_Credentials_Dumping_in_Windows_Environment.pdf
+tags:
+    - attack.Account_Manipulation
+    - attack.t1098
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 5136
+        Type="Value Added"
+    selection2:
+        Properties:
+            - "*1131f6aa-9c07-11d1-f79f-00c04fc2dcd2*"
+        Properties:
+            - "*89e95b76-444d-4c62-991a-0facbeda640c*"
+        Properties:
+            - "*1131f6ad-9c07-11d1-f79f-00c04fc2dcd2*"
+    condition: selection and 1 of selection2
+falsepositives:
+    - Valid DC Sync that is not covered by the filters; please report
+level: high
