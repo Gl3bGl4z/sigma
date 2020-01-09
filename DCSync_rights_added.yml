@@ -24,9 +24,9 @@ detection:
         Type="Value Added"
         Properties:
             - "*1131f6aa-9c07-11d1-f79f-00c04fc2dcd2*"
-		Properties:
+        Properties:
         - "*89e95b76-444d-4c62-991a-0facbeda640c*"
-		Properties:
+        Properties:
             - "*1131f6ad-9c07-11d1-f79f-00c04fc2dcd2*"
     condition: selection
 falsepositives:
