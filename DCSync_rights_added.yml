@@ -21,8 +21,8 @@ logsource:
 detection:
     selection:
         EventID: 5136
-		Type="Value Added"
-		Properties:
+        Type="Value Added"
+        Properties:
 			- "*1131f6aa-9c07-11d1-f79f-00c04fc2dcd2*"
 		Properties:
             - "*89e95b76-444d-4c62-991a-0facbeda640c*"
