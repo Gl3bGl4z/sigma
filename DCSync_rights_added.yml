@@ -1,4 +1,4 @@
-title: DCSync rights added
+title: DCSync rights added using mimikatz or invoke-dcsync
 id: 0000000000000000000001111
 description: Detects DCsync security events
 status: experimental
